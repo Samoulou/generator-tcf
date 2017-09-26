@@ -1,0 +1,41 @@
+monsite.ch
+|_css
+  |_boostrap.css
+  |_style.css
+|_js
+  |_boostrap.js
+  |_main.js
+  |_script1.js
+  |_script2.js
+|_img
+  |_image.png
+  |_image1.png
+|_font
+  |_google_font.font
+|_en
+  |_index.html
+  |_about
+	|_index.html
+  |_my_services
+	|_service1
+		|_index.html
+	|_service2
+		|_index.html
+	|_service3
+		|_index.html
+_fr
+  |_a-propos
+	|_index.html
+  |_mes_services
+	|_service1
+		|_index.html
+	|_service2
+		|_index.html
+	|_service3
+		|_index.html
+ 
+|_index.html
+|_gulp.js
+|_main.js
+|_package.json
+	
