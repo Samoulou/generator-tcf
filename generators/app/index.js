@@ -1,6 +1,5 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const yosay = require('yosay');
 const chalk = require('chalk');
 const mkdirp = require('mkdirp');
 
@@ -10,119 +9,131 @@ module.exports = class extends Generator {
     super(args, opts);
   }
 
-  prompting() {
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the ' + chalk.red('TCF-GENERATOR!')
-    ));
-
-      const prompts = [{
-        type: 'checkbox',
-        name: 'features',
-        message: 'Projet avec SASS ou CSS ?',
-        choices: [{
-          name: 'Sass',
-          value: 'includeSass',
-          checked: true
-        }, {
-          name: 'Bootstrap',
-          value: 'includeBootstrap',
-          checked: true
-        }]
-      }];
-
-      return this.prompt(prompts).then(answers => {
-        const features = answers.features;
-        const hasFeature = feat => features && features.indexOf(feat) !== -1;
-
-  this.includeSass = hasFeature('includeSass');
-  this.includeBootstrap = hasFeature('includeBootstrap');
-
-});
-    }
-
 writing(){
     this._writingFolderStructure();
-    this._writingGrunt();
+    this._writingGulp();
     this._writingPackageJSON();
     this._writingStyles();
     this._writingHTML();
     this._writingScripts();
+    this._writingImg();
 
 }
 _writingFolderStructure(){
-  mkdirp('app/fonts');
-  mkdirp('app/images');
   mkdirp('css');
-  mkdirp('dist');
   mkdirp('en');
-  mkdirp('fonts');
-  mkdirp('fr');
+  mkdirp('en/about');
+  mkdirp('en/my_services');
+  mkdirp('en/my_services/service1');
+  mkdirp('font');
+  mkdirp('fr/a-propos');
+  mkdirp('fr/mes_services');
+  mkdirp('fr/mes_services/service1');
   mkdirp('img');
   mkdirp('js');
-  mkdirp('model');
 }
 
 
 
-_writingGrunt(){
+_writingGulp(){
   this.fs.copyTpl(
-    this.templatePath('grunt.js'),
-    this.destinationPath('gruntfile.js'),
-    {
-      date: (new Date).toISOString().split('T')[0]
-    }
+    this.templatePath('gulp.js'),
+    this.destinationPath('gulpfile.js')
   );
 }
 
 _writingScripts(){
   this.fs.copyTpl(
-    this.templatePath('script.js'),
-    this.destinationPath('main.js')
+    this.templatePath('js/bootstrap.js'),
+    this.destinationPath('js/boostrap.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/bootstrap.min.js'),
+    this.destinationPath('js/boostrap.min.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/contact_me.js'),
+    this.destinationPath('js/contact_me.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/content.js'),
+    this.destinationPath('js/content.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/gallery.js'),
+    this.destinationPath('js/gallery.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/jqBootstrapValidation.js'),
+    this.destinationPath('js/jqBootstrapValidation.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/jquery.1.11.1.js'),
+    this.destinationPath('js/jquery.1.11.1.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/jquery.isotope.js'),
+    this.destinationPath('js/jquery.isotope.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/main.js'),
+    this.destinationPath('js/main.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/nivo-lightbox.js'),
+    this.destinationPath('js/nivo-lightbox.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/nprogress.js'),
+    this.destinationPath('js/nprogress.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/owl.carousel.js'),
+    this.destinationPath('js/owl.carousel.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/portfolio.js'),
+    this.destinationPath('js/portfolio.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/SmoothScroll.js'),
+    this.destinationPath('js/SmoothScroll.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/tcf-team.js'),
+    this.destinationPath('js/tcf-team.js')
+  );
+  this.fs.copyTpl(
+    this.templatePath('js/wow.min.js'),
+    this.destinationPath('js/wow.min.js')
   );
 }
 
 _writingHTML(){
-  let stylePath, stylePlugins, scriptPath, scriptPlugins;
-
-  stylePath = './css/'
-  scriptPath = './js/'
-  stylePlugins = [
-    'animate',
-    'boostrap',
-    'nprogress',
-    'owl.carousel',
-    'owl.them',
-    'style',
-    'style-marielle'
-  ];
-  scriptPlugins = [
-    'boostrap',
-    'contact_me',
-    'content',
-    'gallery',
-    'jqBootstrapValidation',
-    'jquery.1.11.1',
-    'jquery.isotope',
-    'main',
-    'nivo-lightbox',
-    'nprogress',
-    'owl.carousel',
-    'porfolio',
-    'SmoothScroll',
-    'tcf-team',
-    'wow.min'
-  ];
+  this.fs.copyTpl(
+    this.templatePath('html/indexAbout.html'),
+    this.destinationPath('en/about/index.html')
+  );
 
   this.fs.copyTpl(
-    this.templatePath('index.html'),
-    this.destinationPath('index.html'),
-    {
-      stylePath: stylePath,
-      stylePlugins : stylePlugins,
-      scriptPath : scriptPath,
-      scriptPlugins : scriptPlugins
-    }
+    this.templatePath('html/indexService1EN.html'),
+    this.destinationPath('en/my_services/service1/index.html')
+  );
+  this.fs.copyTpl(
+    this.templatePath('html/indexEN.html'),
+    this.destinationPath('en/index.html')
+  );
+  this.fs.copyTpl(
+    this.templatePath('html/indexAPropos.html'),
+    this.destinationPath('fr/a-propos/index.html')
+  );
+  this.fs.copyTpl(
+    this.templatePath('html/indexService1FR.html'),
+    this.destinationPath('fr/mes_services/service1/index.html')
+  );
+  this.fs.copyTpl(
+    this.templatePath('html/index.html'),
+    this.destinationPath('index.html')
   );
 }
 
@@ -131,13 +142,50 @@ _writingPackageJSON(){
     this.templatePath('_package.json'),
     this.destinationPath('package.json')
   );
+  this.fs.copyTpl(
+    this.templatePath('bower.json'),
+    this.destinationPath('bower.json')
+  );
 }
 
 _writingStyles(){
   this.fs.copyTpl(
-    this.templatePath('style.css'),
-    this.destinationPath('style.css')
+    this.templatePath('css/animate.min.css'),
+    this.destinationPath('css/animate.min.css')
+  );
+  this.fs.copyTpl(
+    this.templatePath('css/bootstrap.css'),
+    this.destinationPath('css/bootstrap.css')
+  );
+  this.fs.copyTpl(
+    this.templatePath('css/bootstrap.min.css'),
+    this.destinationPath('css/bootstrap.min.css')
+  );
+  this.fs.copyTpl(
+    this.templatePath('css/nprogress.css'),
+    this.destinationPath('css/nprogress.css')
+  );
+  this.fs.copyTpl(
+    this.templatePath('css/owl.carousel.css'),
+    this.destinationPath('css/owl.carousel.css')
+  );
+  this.fs.copyTpl(
+    this.templatePath('css/owl.theme.css'),
+    this.destinationPath('css/owl.theme.css')
+  );
+  this.fs.copyTpl(
+    this.templatePath('css/style-marielle.css'),
+    this.destinationPath('css/style-marielle.css')
+  );
+  this.fs.copyTpl(
+    this.templatePath('css/style.css'),
+    this.destinationPath('css/style.css')
   );
 }
-
+_writingImg(){
+  this.fs.copyTpl(
+    this.templatePath('img/background_img.jpg'),
+    this.destinationPath('img/background_img.jpg')
+  );
+}
 };

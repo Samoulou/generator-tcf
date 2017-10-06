@@ -1,0 +1,42 @@
+{
+  "name": "tcf_website_template",
+  "version": "1.0.0",
+  "description": "The Computer Firm website templating",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samoulou/TCF_TEMPLATE_TEST.git"
+  },
+  "author": "Sam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samoulou/TCF_TEMPLATE_TEST/issues"
+  },
+  "homepage": "https://github.com/Samoulou/TCF_TEMPLATE_TEST#readme",
+  "dependencies": {
+    "bower": "^1.8.2",
+    "browser-sync": "^2.18.13",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-filter": "^5.0.1",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-inject": "^4.3.0",
+    "gulp-less": "^3.3.2",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-rimraf": "^0.2.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-uncss": "^1.0.6",
+    "gulp-webserver": "^0.9.1",
+    "gulp-zip": "^4.0.0",
+    "main-bower-files": "^2.13.1"
+  }
+}
